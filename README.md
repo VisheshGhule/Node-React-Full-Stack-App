@@ -43,14 +43,14 @@ User --> S3 Hosted React Frontend --> API Calls --> ECS Task (EC2) --> Node.js B
 
 ### 2. Node.js Backend → Docker → ECR
 
-1. Navigate to `Node-React-Full-Stack-App/` (go in root folder)
+1. Navigate to `backend/` 
 
-2. Build and test the image locally:
+2. Build and test the image on ec2:
    ```bash
    docker build -t fullstack-app .
    docker run -p 4000:4000 fullstack-app
    ```
-Test it locally `localhost:4000`
+Test it on browser `<ec2-public-ip>:4000`
 
 ### 3. Create an **ECR repository** and push the docker image: 
 
