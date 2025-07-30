@@ -32,12 +32,13 @@ User --> S3 Hosted React Frontend --> API Calls --> ECS Task (EC2) --> Node.js B
 ### 1. React Frontend → S3
 
 1. Navigate to `frontend/` and build the React app:
+   
    ```bash
    npm install
    npm run build
    ```
-2. Create an **S3 bucket** with static website hosting enabled.
-3. Upload the contents of the `build/` folder to the bucket.
+3. Create an **S3 bucket** with static website hosting enabled.
+4. Upload the contents of the `build/` folder to the bucket.
 
 ---
 
