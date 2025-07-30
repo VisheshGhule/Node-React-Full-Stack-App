@@ -1,44 +1,36 @@
-const express = require('express');
-const app = express();
-const port = 4000;
+const express = require('express')
+const app = express()
+const port = 4000
 
-const tasks = {};
+const tasks = {}
 
-app.use(express.json());
+app.use(express.static('build'));
 
-// Serve static files if you want backend to serve frontend (optional)
-// app.use(express.static('build'));
+app.use(express.json())
 
-// Optional: Add a root route for browser friendliness
-app.get('/', (req, res) => {
-  res.send('Backend is running!');
-});
+app.get('/tasks', (req, res) => {    
+        res.send(tasks)
+})
 
-app.get('/tasks', (req, res) => {
-  res.json(tasks);
-});
+app.post('/tasks', (req,res)=>{
+    const requestBody = req.body
+    tasks[requestBody.task_id] = {}
+    tasks[requestBody.task_id].taskName = requestBody.task_name
+    tasks[requestBody.task_id].status = "undone"
 
-app.post('/tasks', (req, res) => {
-  const { task_id, task_name } = req.body;
-  if (!task_id || !task_name) {
-    return res.status(400).json({ error: 'task_id and task_name are required' });
-  }
-  tasks[task_id] = { taskName: task_name, status: 'undone' };
-  res.status(201).json(tasks[task_id]);
-});
+    res.send(tasks[requestBody.task_id])
+})
 
-app.delete('/tasks/:id', (req, res) => {
-  const task_id = req.params.id;
-  if (tasks[task_id]) {
-    delete tasks[task_id];
-    return res.status(204).send();
-  }
-  res.status(404).json({ error: 'Task not found' });
-});
+app.delete('/tasks/:id', (req,res)=>{
+    const task_id = req.params.id
+    delete tasks[task_id]
+    res.send({})
+})
+
 
 app.listen(port, () => {
-  console.log(`Todo app listening at http://localhost:${port}`);
-  console.log('GET    ---   /tasks');
-  console.log('POST   ---   /tasks');
-  console.log('DELETE ---   /tasks/:id');
-});
+  console.log(`Todo app listening at http://localhost:${port}`)
+  console.log('GET    ---   /tasks')
+  console.log('POST   ---   /tasks')
+  console.log('DELETE ---   /tasks')
+})
