@@ -222,5 +222,5 @@ User --> S3 Hosted React Frontend --> API Calls --> ALB --> ECS Task (Fargate) -
 
 ---
 
-📘 [Read the full step-by-step blog here](https://visheshblog.hashnode.dev/project-4-deploying-a-full-stack-node-react-app-on-aws-using-ecs-fargate-and-alb)
+📘 [Read the full step-by-step blog here](https://visheshblog.hashnode.dev/project-4-deploying-a-full-stack-nodejs-react-application-on-aws-fargate)
 
